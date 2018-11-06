@@ -5,9 +5,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class App
 {
     private static final String CONN_STRING="jdbc:mysql://localhost/testdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Brussels";
+
     public static void main( String[] args )
     {
         TestDBDAO dao = new TestDBDAO(CONN_STRING, "root", "VDAB");
@@ -34,6 +36,7 @@ public class App
 
             if (p == null){
                 System.out.println("Persoon niet gevonden");
+
             } else {
                 System.out.printf("%s %s is %d jaar oud%n", p.getVoornaam(), p.getAchternaam(), p.getLeeftijd());
             }

@@ -17,6 +17,7 @@ public class TestDBDAO {
     private static final String SELECT_By_ID = "SELECT id, voornaam, achternaam, geboortedatum FROM persoon WHERE id = ?";
 
     public TestDBDAO(String connectionString, String username, String password) {
+
         this.connectionString = connectionString;
         this.username = username;
         this.password = password;
@@ -50,10 +51,14 @@ public class TestDBDAO {
 
         Persoon p = null;
 
-        try(Connection conn = getConnection();
+        try (Connection conn = getConnection();
+
             PreparedStatement stm = conn.prepareStatement(SELECT_By_ID)){
+
             stm.setInt(1, anId);
+
             try(ResultSet rs = stm.executeQuery()){
+
                 if (rs.next()){
                     p = extractPersoon(rs);
                 }
@@ -62,6 +67,7 @@ public class TestDBDAO {
 
         return p;
     }
+
 
     private Persoon extractPersoon(ResultSet rs) throws SQLException {
 
